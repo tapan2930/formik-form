@@ -10,7 +10,7 @@ function App() {
     name: '',
     email: '',
     dob: null,
-    join: '',
+    join: null,
     leave: null,
     skills: [{skillName:'', profiency:''}]
   };
@@ -19,7 +19,7 @@ function App() {
     email: Yup.string().required("Required").email("Enter proper email"),
     name: Yup.string().required("Required").max(15, "Must be 15 charaters or less"),
     dob: Yup.date().required("Required").nullable(),
-    join: Yup.date().required("Requried"),
+    join: Yup.date().required("Requried").nullable(),
     leave: Yup.date().min(Yup.ref('join'), "Leaving date should be after joining date").required("Required").nullable(),
     skills: Yup.array().of(Yup.object().shape({
       skillName: Yup.string().required("Required"),
